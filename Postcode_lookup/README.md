@@ -12,7 +12,7 @@ the produced tables.
 
 ### Setup Instructions
 
-1. Follow the installation instructions [here](../README.md#installation)
+1. Follow the installation instructions [here](../README.md#installation).
 2. Rename `.env-example` to `.env`.
 3. Ensure the `.env` file contains the correct file names for the required data.
 
