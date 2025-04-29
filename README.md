@@ -3,7 +3,7 @@
 ## Contact
 This repository was developed and is maintained by the ONS Local team.
 
-> To contact us raise an issue on Github or via email at [ons.local@ons.gov.uk](mailto:ons.local@ons.gov.uk) with the 
+> To contact us raise an issue on [Github](https://github.com/ONSdigital/ONSLocal/issues) or via email at [ons.local@ons.gov.uk](mailto:ons.local@ons.gov.uk) with the 
 > subject GITHUB.
 
 ## Scripts

@@ -5,7 +5,7 @@ import pandas as pd
 import dataframe_image as dfi
 
 from natsort import natsorted
-from typing import List, cast
+from typing import List, cast, Protocol
 from dataclasses import dataclass, field, fields
 
 from pandas import MultiIndex, DataFrame
@@ -16,8 +16,7 @@ from Shared.settings import DataLoader
 from Shared.decorators import time_func
 
 
-@dataclass
-class Data:
+class Data(Protocol):
     postcode_output_area_mapping: DataFrame
     postcode_list: DataFrame
     variable_files: List[pd.DataFrame]
@@ -64,6 +63,10 @@ def save_output(original_data: Data, final_data: FinalData, missing_data: Missin
     dfi.export(final_data.styled_df, 'output/table.png')
     final_data.data.to_csv('output/table.csv', index=False)
 
+    output_missing_data_file(missing_data)
+
+
+def output_missing_data_file(missing_data) -> None:
     # Create the content for the text file
     content = ""
 
@@ -95,7 +98,7 @@ def combine_postcode_census_data(data: Data) -> pd.DataFrame:
     :param data:
     :return:
     """
-
+    
     joined_postcodes = group_postcodes(data)
 
     wide_df_list = []
