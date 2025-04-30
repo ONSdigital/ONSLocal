@@ -11,6 +11,7 @@ class DataLoader:
     def __init__(self, env_path):
         config = env_load(env_path)
 
+        # Attributes are dynamically set based on variables in .env
         for variable in config:
             try:
                 # Convert key into a list if possible
