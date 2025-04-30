@@ -126,10 +126,10 @@ def combine_postcode_census_data(data: Data) -> pd.DataFrame:
 
 def group_postcodes(data: Data) -> DataFrame:
     """
-    Combine postcodes in the same output area
+    Combine postcodes in the same output area.
 
     :param data:
-    :return:
+    :return: Dataframe
     """
     joined_postcodes = data.postcode_list.groupby('oa21')['Postcode'].apply(lambda x: ', '.join(x)).reset_index()
 
@@ -175,6 +175,8 @@ def find_missing_data(data: Data) -> MissingData:
         non_matching_rows = merged_df[merged_df['Output Area'].isna()]['Postcode'].to_list()
 
         suppressed_data.update(non_matching_rows)
+
+    suppressed_data.difference_update(postcodes_missing_oas)
 
     return MissingData(postcodes_missing_oas=postcodes_missing_oas, suppressed_oas=suppressed_data)
 
